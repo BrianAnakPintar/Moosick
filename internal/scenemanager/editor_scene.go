@@ -9,7 +9,6 @@ type EditorScene struct {
     name string
 	buttonNewProject    rl.Rectangle
 	buttonImportProject rl.Rectangle
-	buttonQuit          rl.Rectangle
 }
 
 func (e EditorScene) GetName() string {
@@ -29,11 +28,9 @@ func (e *EditorScene) Render() {
 
 	e.buttonNewProject = rl.Rectangle{X: 100, Y: 100, Width: 200, Height: 50}
 	e.buttonImportProject = rl.Rectangle{X: 100, Y: 170, Width: 200, Height: 50}
-	e.buttonQuit = rl.Rectangle{X: 100, Y: 240, Width: 200, Height: 50}
 
 	rl.DrawRectangleRec(e.buttonNewProject, rl.LightGray)
 	rl.DrawRectangleRec(e.buttonImportProject, rl.LightGray)
-	rl.DrawRectangleRec(e.buttonQuit, rl.LightGray)
 }
 
 func (e *EditorScene) HandleInput() {
@@ -46,10 +43,6 @@ func (e *EditorScene) HandleInput() {
 
 		if rl.CheckCollisionPointRec(mousePos, e.buttonImportProject) {
 			fmt.Println("Import Project button clicked!")
-		}
-
-		if rl.CheckCollisionPointRec(mousePos, e.buttonQuit) {
-			GetInstance().quitRequest = true
 		}
 	}
 }
